@@ -50,7 +50,7 @@ func main() {
 
 	for !rl.WindowShouldClose() {
 		frameCounter++
-		if rl.IsKeyDown(rl.KeyRight) {
+		if rl.IsKeyDown(rl.KeyD) {
 			if frameCounter >= (60 / frameSpeed) {
 				frameCounter = 0
 				currentFrame++
@@ -62,7 +62,7 @@ func main() {
 			rl.DrawRectangleLines(15+int32(runRect.X), 40+int32(runRect.Y), int32(runRect.Width), int32(runRect.Height), rl.Red)
 			rl.DrawTexturePro(adventurerSheet, runRect, destRec, origin, 0, rl.White)
 		}
-		if rl.IsKeyUp(rl.KeyRight) {
+		if rl.IsKeyUp(rl.KeyD) {
 			if frameCounter >= (60 / frameSpeed) {
 				frameCounter = 0
 				currentFrame++
@@ -91,17 +91,4 @@ func main() {
 	rl.UnloadTexture(adventurerSheet)
 
 	rl.CloseWindow()
-}
-func idleAnim(frameCnt int, currFrame float32, srcRect rl.Rectangle, advenSheet rl.Texture2D) float32 {
-	frameCnt = 0
-	currFrame++
-	if currFrame > 3 {
-		currFrame = 0
-	}
-	a := &currFrame
-	srcRect.X = currFrame * float32(advenSheet.Width) / 7
-	println("CurrFrameAdd", a)
-	println("CurrentFrame: ", int(*a))
-
-	return currFrame
 }
